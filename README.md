@@ -18,9 +18,23 @@ In this README, you will learn how to write a Python script using `excel2xml`.
 
 
 ## Open this repository in Visual Studio Code
+
 From within [GitHub Desktop](https://desktop.github.com/), clone this repository, and open it in [Visual Studio 
 Code](https://code.visualstudio.com/download). You will be prompted to install some extensions that are recommended for 
-importing data in DaSCH. After installing them, navigate to `README.md` and press ⇧⌘V (Ctrl+Shift+V on Windows) to get a preview.  
+importing data in DaSCH. After installing them, navigate to `README.md` and press ⌘⇧V (Ctrl+Shift+V on Windows) to get a 
+preview.  
+
+
+
+### Data model
+
+Before importing data into DSP, you need a data model. We have created a very easy one for you to get started: 
+`import_project.json`. In order not to type everything by hand in JSON, you can prepare the structure of a data model 
+with Excelfiles, and then use the command [`dsp-tools excel2json`](https://docs.dasch.swiss/latest/DSP-TOOLS/dsp-tools-excel2json/)
+to convert them to JSON. The Excel files necessary to create `import_project.json` are in the folder `data_model_files`.
+
+
+### Import script
 
 Open `import_script.py`. You can now choose a Python interpreter by clicking on the Version number on the bottom right.
 You can either work with the global (system-wide) Python, or you can create a 
@@ -34,6 +48,7 @@ The only thing that you shouldn't do is selecting a virtual environment of anoth
 
 
 ## The benefits of the debugging mode
+
 To start the debugging process, switch to the "Run and Debug" tab.
 
 1. set a break point
@@ -71,6 +86,7 @@ You see that the debugging mode is a useful tool to understand code and to inspe
 
 
 ## The benefits of version control
+
 One of the big benefits of version control is the diff viewer. Visual Studio Code highlights the changes you have 
 introduced since your last commit. 
 
@@ -86,6 +102,7 @@ change, revert it, or jump to the next/previous change.
 
 
 ### Make a commit
+
 Once you have a bunch of code changes that can be meaningfully grouped together, you should make a commit. 
 If you click on "Commit", all staged changes will be committed:
 
@@ -99,6 +116,7 @@ If you click on "Commit", all staged changes will be committed:
 
 
 ### Publish your repo on dasch-swiss
+
 If you work on a big project where you spend weeks/months on, you might want to have a backup, or to invite colleagues for 
 collaboration or a code review. For this purpose, follow these steps:
 
@@ -114,7 +132,9 @@ collaboration or a code review. For this purpose, follow these steps:
 
 
 ## Some extras
+
 ### Data cleaning with OpenRefine
+
 [**OpenRefine**](https://openrefine.org/) is a tool for working with messy data. Once downloaded and installed, it runs 
 as a local server, accessed by your browser. So, all data remains on your own machine. If you work on a Mac and have 
 Homebrew installed, you can simply type: 
@@ -129,10 +149,13 @@ The potentials for the everyday work of the Research Data Unit at DaSCH are twof
 
 
 ### Git GUIs
+
 Git can be complicated, so you will appreciate to work with one of these GUIs:
 
  - [**GitHub Desktop**](https://desktop.github.com/)
  - [**SourceTree**](https://www.sourcetreeapp.com/)
 
+
 ### Learn, build and test RegEx
+
 [https://regexr.com](https://regexr.com)
