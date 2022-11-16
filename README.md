@@ -2,18 +2,24 @@
 
 This is a template repository that can be used for the archiving process of a big dataset at the end of a research 
 project's lifetime. For this purpose, the [`excel2xml` module](https://docs.dasch.swiss/latest/DSP-TOOLS/dsp-tools-excel2xml/) 
-of DSP-TOOLS was developed. This repository gives you an example how to use `excel2xml` to import a big dataset into DSP.  
+of DSP-TOOLS was developed. 
 
-In this README, you will learn how to write a Python script using `excel2xml`.  
+This README guides you through the steps to set up a repository. After that, you can learn how to use `excel2xml` in a 
+Python script in the documentation of the [`excel2xml` module](https://docs.dasch.swiss/latest/DSP-TOOLS/dsp-tools-excel2xml/).
 
 ## Table of Contents
 
 - [Open this repository in Visual Studio Code](#open-this-repository-in-visual-studio-code)
+   - [Create a data model with `excel2json`](#create-a-data-model-with-excel2json)
+   - [Import script](#import-script)
 - [The benefits of the Debugging Mode](#the-benefits-of-the-debugging-mode)
 - [The benefits of Version Control with Git](#the-benefits-of-version-control)
    - [Make a commit](#make-a-commit)
    - [Publish your repo on dasch-swiss](#publish-your-repo-on-dasch-swiss)
-- [Some extras: OpenRefine, Git GUIs, regexr](#some-extras)
+- [Some extras](#some-extras)
+   - [Data cleaning with OpenRefine](#data-cleaning-with-openrefine)
+   - [Git GUIs](#git-guis)
+   - [Learn, build and test RegEx](#learn-build-and-test-regex)
 
 
 
@@ -26,12 +32,12 @@ preview.
 
 
 
-### Data model
+### Create a data model with `excel2json`
 
 Before importing data into DSP, you need a data model. We have created a very easy one for you to get started: 
-`import_project.json`. In order not to type everything by hand in JSON, you can prepare the structure of a data model 
-with Excelfiles, and then use the command [`dsp-tools excel2json`](https://docs.dasch.swiss/latest/DSP-TOOLS/dsp-tools-excel2json/)
-to convert them to JSON. The Excel files necessary to create `import_project.json` are in the folder `data_model_files`.
+`import_project.json`. In order not to type everything by hand in JSON, you can create your data model in Excel, and 
+then use the command [`dsp-tools excel2json`](https://docs.dasch.swiss/latest/DSP-TOOLS/dsp-tools-excel2json)
+to convert it to JSON. The folder `data_model_files` contains the Excel files necessary to create `import_project.json`.
 
 
 ### Import script
