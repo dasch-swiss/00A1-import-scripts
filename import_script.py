@@ -4,7 +4,7 @@ import warnings
 import pandas as pd
 import regex
 
-from dsp_tools import excel2xml
+from dsptools import excel2xml
 
 
 def main():
