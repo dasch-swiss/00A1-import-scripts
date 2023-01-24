@@ -1,11 +1,15 @@
 # Welcome to 0123-import-scripts!
 
-This is a template repository that can be used for the archiving process of a big dataset at the end of a research 
-project's lifetime. For this purpose, the [`excel2xml` module](https://docs.dasch.swiss/latest/DSP-TOOLS/dsp-tools-excel2xml/) 
+This is a template repository 
+that can be used for the archiving process of a big dataset 
+at the end of a research project's lifetime. 
+For this purpose, 
+the [`excel2xml` module](https://docs.dasch.swiss/latest/DSP-TOOLS/excel2xml-module) 
 of DSP-TOOLS was developed. 
 
-This README guides you through the steps to set up a repository. After that, you can learn how to use `excel2xml` in a 
-Python script in the documentation of the [`excel2xml` module](https://docs.dasch.swiss/latest/DSP-TOOLS/dsp-tools-excel2xml/).
+This README guides you through the steps to set up a repository. 
+After that, you can learn how to use `excel2xml` in a Python script
+in the documentation of the [`excel2xml` module](https://docs.dasch.swiss/latest/DSP-TOOLS/excel2xml-module).
 
 ## Table of Contents
 
@@ -36,7 +40,7 @@ preview.
 
 Before importing data into DSP, you need a data model. We have created a very easy one for you to get started: 
 `import_project.json`. In order not to type everything by hand in JSON, you can create your data model in Excel, and 
-then use the command [`dsp-tools excel2json`](https://docs.dasch.swiss/latest/DSP-TOOLS/dsp-tools-excel2json)
+then use the command [`dsp-tools excel2json`](https://docs.dasch.swiss/latest/DSP-TOOLS/cli-commands/#excel2json)
 to convert it to JSON. The folder `data_model_files` contains the Excel files necessary to create `import_project.json`.
 
 
@@ -45,8 +49,10 @@ to convert it to JSON. The folder `data_model_files` contains the Excel files ne
 Open `import_script.py`. You can now choose a Python interpreter by clicking on the Version number on the bottom right.
 You can either work with the global (system-wide) Python, or you can create a 
 [virtual environment](https://python.land/virtual-environments) for your project.  
-DaSCH employees who have installed Python via Homebrew can choose the one located in `/usr/local/Cellar`. Probably you 
-already have a symlink (`/usr/local/bin/python3` or `/usr/bin/python3`) that redirects to `/usr/local/Cellar`.  
+DaSCH employees who have installed Python via Homebrew can choose that one. 
+To find it, type`brew --prefix` in a Terminal. 
+Probably you already have a symlink (`/usr/local/bin/python3` or `/usr/bin/python3`) 
+that redirects to the Homebrew-installed Python.  
 The only thing that you shouldn't do is selecting a virtual environment of another project.
 
 ![python interpreter](assets/python-interpreter.png)

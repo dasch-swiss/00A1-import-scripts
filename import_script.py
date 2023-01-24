@@ -135,7 +135,7 @@ def main():
     # ------------------------
     # These special resource classes are DSP base resources, that's why they use DSP base properties without prepended colon
     # See the docs for more details:
-    # https://docs.dasch.swiss/latest/DSP-TOOLS/dsp-tools-xmlupload/#dsp-base-resources-base-properties-to-be-used-directly-in-the-xml-file
+    # https://docs.dasch.swiss/latest/DSP-TOOLS/file-formats/xml-data-file/#dsp-base-resources-and-base-properties-to-be-used-directly-in-the-xml-file
     annotation = excel2xml.make_annotation("Annotation to Anubis", "annotation_to_anubis")
     annotation.append(excel2xml.make_text_prop("hasComment", "Date and time are invented, like for the other resources."))
     annotation.append(excel2xml.make_resptr_prop("isAnnotationOf", object_labels_to_ids["Anubis"]))
