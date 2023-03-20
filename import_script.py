@@ -18,7 +18,7 @@ def main():
     main_df.dropna(axis="index", how="all", inplace=True)
 
     # create the root tag <knora> and append the permissions
-    root = excel2xml.make_root(shortcode="0123", default_ontology="import")
+    root = excel2xml.make_root(shortcode="00A1", default_ontology="import")
     root = excel2xml.append_permissions(root)
 
 

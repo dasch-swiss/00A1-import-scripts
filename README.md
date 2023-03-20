@@ -1,4 +1,4 @@
-# Welcome to 0123-import-scripts!
+# Welcome to 00A1-import-scripts!
 
 This is a template repository 
 that can be used for the archiving process of a big dataset 
@@ -139,7 +139,7 @@ collaboration or a code review. For this purpose, follow these steps:
 
 | **WARNING**                                                                                                            |
 |------------------------------------------------------------------------------------------------------------------------|
-| **Do NOT push to https://github.com/dasch-swiss/0123-import-scripts ! This is a template and should remain as it is!** | 
+| **Do NOT push to https://github.com/dasch-swiss/00A1-import-scripts ! This is a template and should remain as it is!** | 
 
 
 
