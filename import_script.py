@@ -74,6 +74,7 @@ def main():
 
     # iterate through all rows of your data source, in pairs of (row-number, row)
     for index, row in main_df.iterrows():
+        index = int(str(index))  # convert the index to an integer
 
         # keep a reference to this ID in the dict
         resource_label = row["Object"]
@@ -99,14 +100,20 @@ def main():
         # add a text property, overriding the default values for "permissions" and "encoding"
         resource.append(excel2xml.make_text_prop(
             ":hasDescription",
-            excel2xml.PropertyElement(value=row["Description"], permissions="prop-restricted",
-                                    comment="comment to 'Description'", encoding="xml")
+            excel2xml.PropertyElement(
+                value=row["Description"], 
+                permissions="prop-restricted",
+                comment="comment to 'Description'", 
+                encoding="xml"
+            )
         ))
 
         # get "category" list nodes: split the cell into a list of values...
         category_values_raw = [x.strip() for x in row["Category"].split(",")]
         # ...look up every value in "category_labels_to_names", and if it's not there, in "category_excel_values_to_names"...
         category_values = [category_labels_to_names.get(x, category_excel_values_to_names.get(x)) for x in category_values_raw]
+        # ...filter out the None values...
+        category_values = [x for x in category_values if x is not None]
         # ...create the <list-prop> with the correct names of the list nodes
         resource.append(excel2xml.make_list_prop("category", ":hasCategory", category_values))
 
@@ -161,6 +168,7 @@ def main():
     # write file
     # ----------
     excel2xml.write_xml(root, "data-processed.xml")
+
 
 if __name__ == "__main__":
     main()
