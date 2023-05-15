@@ -8,6 +8,9 @@ from dsp_tools import excel2xml
 
 
 def main() -> None:
+    """
+    main method: all code must be inside this method
+    """
     # general preparation
     # -------------------
     path_to_json = "import_project.json"
