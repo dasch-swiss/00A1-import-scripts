@@ -1,4 +1,4 @@
-# Welcome to 00A1-import-scripts!
+# Welcome to 00A1-import-scripts
 
 This is a template repository 
 that can be used for the archiving process of a big dataset 
@@ -14,16 +14,16 @@ in the documentation of the [`excel2xml` module](https://docs.dasch.swiss/latest
 ## Table of Contents
 
 - [Open this repository in Visual Studio Code](#open-this-repository-in-visual-studio-code)
-   - [Create a data model with `excel2json`](#create-a-data-model-with-excel2json)
-   - [Import script](#import-script)
+    - [Create a data model with `excel2json`](#create-a-data-model-with-excel2json)
+    - [Import script](#import-script)
 - [The benefits of the Debugging Mode](#the-benefits-of-the-debugging-mode)
 - [The benefits of Version Control with Git](#the-benefits-of-version-control)
-   - [Make a commit](#make-a-commit)
-   - [Publish your repo on dasch-swiss](#publish-your-repo-on-dasch-swiss)
+    - [Make a commit](#make-a-commit)
+    - [Publish your repo on dasch-swiss](#publish-your-repo-on-dasch-swiss)
 - [Some extras](#some-extras)
-   - [Data cleaning with OpenRefine](#data-cleaning-with-openrefine)
-   - [Git GUIs](#git-guis)
-   - [Learn, build and test RegEx](#learn-build-and-test-regex)
+    - [Data cleaning with OpenRefine](#data-cleaning-with-openrefine)
+    - [Git GUIs](#git-guis)
+    - [Learn, build and test RegEx](#learn-build-and-test-regex)
 
 
 
@@ -139,7 +139,7 @@ collaboration or a code review. For this purpose, follow these steps:
 
 | **WARNING**                                                                                                            |
 |------------------------------------------------------------------------------------------------------------------------|
-| **Do NOT push to https://github.com/dasch-swiss/00A1-import-scripts ! This is a template and should remain as it is!** | 
+| **Do NOT push to <https://github.com/dasch-swiss/00A1-import-scripts> ! This is a template and should remain as it is!** | 
 
 
 
@@ -150,11 +150,13 @@ collaboration or a code review. For this purpose, follow these steps:
 [**OpenRefine**](https://openrefine.org/) is a tool for working with messy data. Once downloaded and installed, it runs 
 as a local server, accessed by your browser. So, all data remains on your own machine. If you work on a Mac and have 
 Homebrew installed, you can simply type: 
-```
+
+```bash
 brew install openrefine
 ```
 
 The potentials for the everyday work of the Research Data Unit at DaSCH are twofold:
+
 1. Data cleaning (recommended): For this purpose, you can think of OpenRefine as a much better version of Excel. You 
    can perform operations which would be very tiresome in Excel.
 2. Conversion to our DSP-specific XML format for bulk upload (not recommended)
@@ -164,8 +166,8 @@ The potentials for the everyday work of the Research Data Unit at DaSCH are twof
 
 Git can be complicated, so you will appreciate to work with one of these GUIs:
 
- - [**GitHub Desktop**](https://desktop.github.com/)
- - [**SourceTree**](https://www.sourcetreeapp.com/)
+- [**GitHub Desktop**](https://desktop.github.com/)
+- [**SourceTree**](https://www.sourcetreeapp.com/)
 
 
 ### Learn, build and test RegEx
