@@ -142,7 +142,7 @@ def main() -> None:
     annotation = excel2xml.make_annotation("Annotation to Anubis", "annotation_to_anubis")
     annotation.append(
         excel2xml.make_text_prop(
-            "hasComment", 
+            "hasComment",
             "Date and time are invented, like for the other resources.",
         )
     )
@@ -166,7 +166,7 @@ def main() -> None:
     link.append(excel2xml.make_text_prop("hasComment", "This is a comment"))
     link.append(
         excel2xml.make_resptr_prop(
-            "hasLinkTo", 
+            "hasLinkTo",
             [object_labels_to_ids["BM1888-0601-716"], object_labels_to_ids["Horohoroto"]],
         )
     )
