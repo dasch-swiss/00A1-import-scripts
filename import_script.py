@@ -28,15 +28,15 @@ def main() -> None:
 
     # create list mappings
     # --------------------
-    # for every node of the list "category", this dictionary maps the German label to the node name
+    # For every node of the list "category", this dictionary maps the German label to the node name.
     category_labels_to_names = excel2xml.create_json_list_mapping(
         path_to_json=path_to_json,
         list_name="category",
         language_label="de",
     )
-    # for every node of the list "category", this dictionary maps similar entries of the Excel column to the node name
-    # when you run this script, two warnings appear that "Säugetiere" and "Kunstwerk" couldn't be matched. Luckily, these
-    # two are covered in category_labels_to_names!
+    # For every node of the list "category", this dictionary maps similar entries of the Excel column to the node name.
+    # When you run this script, two warnings appear, saying that "Säugetiere" and "Kunstwerk" couldn't be matched.
+    # Luckily, these two are covered in category_labels_to_names.
     category_excel_values_to_names = excel2xml.create_json_excel_list_mapping(
         path_to_json=path_to_json,
         list_name="category",
@@ -46,8 +46,9 @@ def main() -> None:
 
     # create resources of type ":Image2D"
     # -----------------------------------
-    # create a dict that keeps the IDs of the created resources, retrieve all files from the "images" folder
-    # that don't start with "~$" or ".", and sort them according to the file name
+    # create a dict that keeps the IDs of the created resources,
+    # retrieve all files from the "images" folder that don't start with "~$" or ".",
+    # and sort them according to the file name
     image2d_labels_to_ids = dict()
     all_images = [file for file in os.scandir("images") if not regex.search(r"^~$|^\.", file.name)]
     all_images = sorted(all_images, key=lambda file: file.name.lower())
@@ -105,7 +106,8 @@ def main() -> None:
 
         # get "category" list nodes: split the cell into a list of values...
         category_values_raw = [x.strip() for x in row["Category"].split(",")]
-        # ...look up every value in "category_labels_to_names", and if it's not there, in "category_excel_values_to_names"...
+        # ...look up every value in "category_labels_to_names",
+        # and if it's not there, in "category_excel_values_to_names"...
         category_values = [
             category_labels_to_names.get(x, category_excel_values_to_names.get(x)) for x in category_values_raw
         ]
@@ -136,7 +138,8 @@ def main() -> None:
 
     # Annotation, Region, Link
     # ------------------------
-    # These special resource classes are DSP base resources, that's why they use DSP base properties without prepended colon
+    # These special resource classes are DSP base resources,
+    # that's why they use DSP base properties without prepended colon.
     # See the docs for more details:
     # https://docs.dasch.swiss/latest/DSP-TOOLS/file-formats/xml-data-file/#dsp-base-resources-and-base-properties-to-be-used-directly-in-the-xml-file
     annotation = excel2xml.make_annotation("Annotation to Anubis", "annotation_to_anubis")
