@@ -17,13 +17,14 @@ def main() -> None:
     main_df = pd.read_csv("data_raw.csv", dtype="str", sep=",")  # or: pd.read_excel("*.xls(x)", dtype="str")
 
     # remove rows without usable values (prevents Errors when there are empty rows at the end of the file)
-    main_df = main_df.applymap(lambda x: x if pd.notna(x) and regex.search(r"[\p{L}\d_!?]", str(x), flags=regex.U) else pd.NA)
+    main_df = main_df.applymap(
+        lambda x: x if pd.notna(x) and regex.search(r"[\p{L}\d_!?]", str(x), flags=regex.U) else pd.NA
+    )
     main_df.dropna(axis="index", how="all", inplace=True)
 
     # create the root tag <knora> and append the permissions
     root = excel2xml.make_root(shortcode="00A1", default_ontology="import")
     root = excel2xml.append_permissions(root)
-
 
     # create list mappings
     # --------------------
@@ -31,7 +32,7 @@ def main() -> None:
     category_labels_to_names = excel2xml.create_json_list_mapping(
         path_to_json=path_to_json,
         list_name="category",
-        language_label="de"
+        language_label="de",
     )
     # for every node of the list "category", this dictionary maps similar entries of the Excel column to the node name
     # when you run this script, two warnings appear that "Säugetiere" and "Kunstwerk" couldn't be matched. Luckily, these
@@ -40,9 +41,8 @@ def main() -> None:
         path_to_json=path_to_json,
         list_name="category",
         excel_values=main_df["Category"],
-        sep=","
+        sep=",",
     )
-
 
     # create resources of type ":Image2D"
     # -----------------------------------
@@ -54,21 +54,15 @@ def main() -> None:
 
     # iterate through all images, and create an ":Image2D" for every image file
     for img in all_images:
-
         # keep a reference to this ID in the dict
         resource_label = img.name
         resource_id = excel2xml.make_xsd_id_compatible(resource_label)
         image2d_labels_to_ids[resource_label] = resource_id
 
-        resource = excel2xml.make_resource(
-            label=resource_label,
-            restype=":Image2D",
-            id=resource_id
-        )
+        resource = excel2xml.make_resource(label=resource_label, restype=":Image2D", id=resource_id)
         resource.append(excel2xml.make_bitstream_prop(img.path))
         resource.append(excel2xml.make_text_prop(":hasTitle", resource_label))
         root.append(resource)
-
 
     # create resources of type ":Object"
     # ----------------------------------
@@ -84,11 +78,7 @@ def main() -> None:
         resource_id = excel2xml.make_xsd_id_compatible(resource_label)
         object_labels_to_ids[resource_label] = resource_id
 
-        resource = excel2xml.make_resource(
-            label=resource_label,
-            restype=":Object",
-            id=resource_id
-        )
+        resource = excel2xml.make_resource(label=resource_label, restype=":Object", id=resource_id)
 
         # check every existing ":Image2D" resource, if there is an image that belongs to this object
         for img_label, img_id in image2d_labels_to_ids.items():
@@ -101,20 +91,24 @@ def main() -> None:
         resource.append(excel2xml.make_text_prop(":hasName", row["Title"]))
 
         # add a text property, overriding the default values for "permissions" and "encoding"
-        resource.append(excel2xml.make_text_prop(
-            ":hasDescription",
-            excel2xml.PropertyElement(
-                value=row["Description"], 
-                permissions="prop-restricted",
-                comment="comment to 'Description'", 
-                encoding="xml"
+        resource.append(
+            excel2xml.make_text_prop(
+                ":hasDescription",
+                excel2xml.PropertyElement(
+                    value=row["Description"],
+                    permissions="prop-restricted",
+                    comment="comment to 'Description'",
+                    encoding="xml",
+                ),
             )
-        ))
+        )
 
         # get "category" list nodes: split the cell into a list of values...
         category_values_raw = [x.strip() for x in row["Category"].split(",")]
         # ...look up every value in "category_labels_to_names", and if it's not there, in "category_excel_values_to_names"...
-        category_values = [category_labels_to_names.get(x, category_excel_values_to_names.get(x)) for x in category_values_raw]
+        category_values = [
+            category_labels_to_names.get(x, category_excel_values_to_names.get(x)) for x in category_values_raw
+        ]
         # ...filter out the None values...
         category_values = [x for x in category_values if x is not None]
         # ...create the <list-prop> with the correct names of the list nodes
@@ -140,14 +134,18 @@ def main() -> None:
 
         root.append(resource)
 
-
     # Annotation, Region, Link
     # ------------------------
     # These special resource classes are DSP base resources, that's why they use DSP base properties without prepended colon
     # See the docs for more details:
     # https://docs.dasch.swiss/latest/DSP-TOOLS/file-formats/xml-data-file/#dsp-base-resources-and-base-properties-to-be-used-directly-in-the-xml-file
     annotation = excel2xml.make_annotation("Annotation to Anubis", "annotation_to_anubis")
-    annotation.append(excel2xml.make_text_prop("hasComment", "Date and time are invented, like for the other resources."))
+    annotation.append(
+        excel2xml.make_text_prop(
+            "hasComment", 
+            "Date and time are invented, like for the other resources.",
+        )
+    )
     annotation.append(excel2xml.make_resptr_prop("isAnnotationOf", object_labels_to_ids["Anubis"]))
     root.append(annotation)
 
@@ -155,18 +153,24 @@ def main() -> None:
     region.append(excel2xml.make_text_prop("hasComment", "This is a comment"))
     region.append(excel2xml.make_color_prop("hasColor", "#5d1f1e"))
     region.append(excel2xml.make_resptr_prop("isRegionOf", image2d_labels_to_ids["GibeonMeteorite.jpg"]))
-    region.append(excel2xml.make_geometry_prop(
-        "hasGeometry",
-        '{"type": "rectangle", "lineColor": "#ff3333", "lineWidth": 2, '
-        '"points": [{"x": 0.08, "y": 0.16}, {"x": 0.73, "y": 0.72}], "original_index": 0}'
-    ))
+    region.append(
+        excel2xml.make_geometry_prop(
+            "hasGeometry",
+            '{"type": "rectangle", "lineColor": "#ff3333", "lineWidth": 2, '
+            '"points": [{"x": 0.08, "y": 0.16}, {"x": 0.73, "y": 0.72}], "original_index": 0}',
+        )
+    )
     root.append(region)
 
     link = excel2xml.make_link("Link between BM1888-0601-716 and Horohoroto", "link_BM1888-0601-716_horohoroto")
     link.append(excel2xml.make_text_prop("hasComment", "This is a comment"))
-    link.append(excel2xml.make_resptr_prop("hasLinkTo", [object_labels_to_ids["BM1888-0601-716"], object_labels_to_ids["Horohoroto"]]))
+    link.append(
+        excel2xml.make_resptr_prop(
+            "hasLinkTo", 
+            [object_labels_to_ids["BM1888-0601-716"], object_labels_to_ids["Horohoroto"]],
+        )
+    )
     root.append(link)
-
 
     # write file
     # ----------
