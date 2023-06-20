@@ -62,7 +62,7 @@ def main() -> None:
 
         resource = excel2xml.make_resource(label=resource_label, restype=":Image2D", id=resource_id)
         resource.append(excel2xml.make_bitstream_prop(img.path))
-        resource.append(excel2xml.make_text_prop(":hasTitle", resource_label))
+        resource.append(excel2xml.make_unformatted_text_prop(":hasTitle", resource_label))
         root.append(resource)
 
     # create resources of type ":Object"
@@ -88,21 +88,9 @@ def main() -> None:
                 # create a resptr-link to the ID of the ":Image2D" resource
                 resource.append(excel2xml.make_resptr_prop(":hasImage", img_id))
 
-        # add a text property with the simple approach
-        resource.append(excel2xml.make_text_prop(":hasName", row["Title"]))
-
-        # add a text property, overriding the default values for "permissions" and "encoding"
-        resource.append(
-            excel2xml.make_text_prop(
-                ":hasDescription",
-                excel2xml.PropertyElement(
-                    value=row["Description"],
-                    permissions="prop-restricted",
-                    comment="comment to 'Description'",
-                    encoding="xml",
-                ),
-            )
-        )
+        # add an unformatted and a formatted text property
+        resource.append(excel2xml.make_unformatted_text_prop(":hasName", row["Title"]))
+        resource.append(excel2xml.make_formatted_text_prop(":hasDescription", row["Description"]))
 
         # get "category" list nodes: split the cell into a list of values...
         category_values_raw = [x.strip() for x in row["Category"].split(",")]
@@ -127,12 +115,23 @@ def main() -> None:
             warnings.warn(f"Error in row {index + 2}: The column 'Date' should contain a date!")
         if excel2xml.check_notna(row["Time"]):
             resource.append(excel2xml.make_time_prop(":hasTime", row["Time"]))
-        if excel2xml.check_notna(row["Weight (kg)"]):
-            resource.append(excel2xml.make_decimal_prop(":hasWeight", row["Weight (kg)"]))
         if excel2xml.check_notna(row["Location"]):
             resource.append(excel2xml.make_geoname_prop(":hasLocation", row["Location"]))
-        if excel2xml.check_notna(row["URL"]):
-            resource.append(excel2xml.make_uri_prop(":hasExternalLink", row["URL"]))
+        
+        # example that leaves the defaults for "permissions" and "comment"
+        resource.append(
+            excel2xml.make_decimal_prop(
+                ":hasWeight", 
+                row["Weight (kg)"],
+            )
+        )
+        # example that overrides the defaults for "permissions" and "comment"
+        resource.append(
+            excel2xml.make_uri_prop(
+                ":hasExternalLink",
+                excel2xml.PropertyElement(row["URL"], permissions="prop-restricted", comment="This is a comment"),
+            )
+        )
 
         root.append(resource)
 
@@ -144,7 +143,7 @@ def main() -> None:
     # https://docs.dasch.swiss/latest/DSP-TOOLS/file-formats/xml-data-file/#dsp-base-resources-and-base-properties-to-be-used-directly-in-the-xml-file
     annotation = excel2xml.make_annotation("Annotation to Anubis", "annotation_to_anubis")
     annotation.append(
-        excel2xml.make_text_prop(
+        excel2xml.make_formatted_text_prop(
             "hasComment",
             "Date and time are invented, like for the other resources.",
         )
@@ -153,7 +152,7 @@ def main() -> None:
     root.append(annotation)
 
     region = excel2xml.make_region("Region of the Meteorite image", "region_of_meteorite")
-    region.append(excel2xml.make_text_prop("hasComment", "This is a comment"))
+    region.append(excel2xml.make_formatted_text_prop("hasComment", "This is a comment"))
     region.append(excel2xml.make_color_prop("hasColor", "#5d1f1e"))
     region.append(excel2xml.make_resptr_prop("isRegionOf", image2d_labels_to_ids["GibeonMeteorite.jpg"]))
     region.append(
@@ -166,7 +165,7 @@ def main() -> None:
     root.append(region)
 
     link = excel2xml.make_link("Link between BM1888-0601-716 and Horohoroto", "link_BM1888-0601-716_horohoroto")
-    link.append(excel2xml.make_text_prop("hasComment", "This is a comment"))
+    link.append(excel2xml.make_formatted_text_prop("hasComment", "This is a comment"))
     link.append(
         excel2xml.make_resptr_prop(
             "hasLinkTo",

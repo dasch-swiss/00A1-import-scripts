@@ -79,23 +79,20 @@
           {
             "name": "hasDescription",
             "super": ["hasValue"],
-            "object": "TextValue",
-            "labels": {"en": "Description"},
-            "gui_element": "Richtext"
+            "object": "FormattedTextValue",
+            "labels": {"en": "Description"}
           },
           {
             "name": "hasName",
             "super": ["hasValue"],
-            "object": "TextValue",
-            "labels": {"en": "Name"},
-            "gui_element": "SimpleText"
+            "object": "UnformattedTextValue",
+            "labels": {"en": "Name"}
           },
           {
             "name": "hasTitle",
             "super": ["hasValue"],
-            "object": "TextValue",
-            "labels": {"en": "Title"},
-            "gui_element": "SimpleText"
+            "object": "UnformattedTextValue",
+            "labels": {"en": "Title"}
           },
           {
             "name": "hasDate",
