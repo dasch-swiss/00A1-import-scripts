@@ -14,3 +14,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Generated files
+data-processed.xml
