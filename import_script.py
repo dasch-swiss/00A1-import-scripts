@@ -17,7 +17,7 @@ def main() -> None:
     main_df = pd.read_csv("data_raw.csv", dtype="str", sep=",")  # or: pd.read_excel("*.xls(x)", dtype="str")
 
     # remove rows without usable values (prevents Errors when there are empty rows at the end of the file)
-    main_df = main_df.applymap(
+    main_df = main_df.map(
         lambda x: x if pd.notna(x) and regex.search(r"[\p{L}\d_!?]", str(x), flags=regex.U) else pd.NA
     )
     main_df = main_df.dropna(axis="index", how="all")
