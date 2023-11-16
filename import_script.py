@@ -1,5 +1,5 @@
-import os
 import warnings
+from pathlib import Path
 
 import pandas as pd
 import regex
@@ -48,10 +48,8 @@ def main() -> None:
     # -----------------------------------
     # create a dict that keeps the IDs of the created resources,
     # retrieve all files from the "images" folder that don't start with "~$" or ".",
-    # and sort them according to the file name
     image2d_labels_to_ids = {}
-    all_images = [file for file in os.scandir("images") if not regex.search(r"^~$|^\.", file.name)]
-    all_images = sorted(all_images, key=lambda file: file.name.lower())
+    all_images = [x for x in Path("images").glob("*") if not regex.search(r"^~$|^\.", x.name)]
 
     # iterate through all images, and create an ":Image2D" for every image file
     for img in all_images:
@@ -61,7 +59,7 @@ def main() -> None:
         image2d_labels_to_ids[resource_label] = resource_id
 
         resource = excel2xml.make_resource(label=resource_label, restype=":Image2D", id=resource_id)
-        resource.append(excel2xml.make_bitstream_prop(img.path))
+        resource.append(excel2xml.make_bitstream_prop(img))
         resource.append(excel2xml.make_text_prop(":hasTitle", resource_label))
         root.append(resource)
 
