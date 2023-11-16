@@ -20,7 +20,7 @@ def main() -> None:
     main_df = main_df.applymap(
         lambda x: x if pd.notna(x) and regex.search(r"[\p{L}\d_!?]", str(x), flags=regex.U) else pd.NA
     )
-    main_df.dropna(axis="index", how="all", inplace=True)
+    main_df = main_df.dropna(axis="index", how="all")
 
     # create the root tag <knora> and append the permissions
     root = excel2xml.make_root(shortcode="00A1", default_ontology="import")
@@ -49,7 +49,7 @@ def main() -> None:
     # create a dict that keeps the IDs of the created resources,
     # retrieve all files from the "images" folder that don't start with "~$" or ".",
     # and sort them according to the file name
-    image2d_labels_to_ids = dict()
+    image2d_labels_to_ids = {}
     all_images = [file for file in os.scandir("images") if not regex.search(r"^~$|^\.", file.name)]
     all_images = sorted(all_images, key=lambda file: file.name.lower())
 
@@ -68,7 +68,7 @@ def main() -> None:
     # create resources of type ":Object"
     # ----------------------------------
     # create a dict that keeps the IDs of the created resources
-    object_labels_to_ids = dict()
+    object_labels_to_ids = {}
 
     # iterate through all rows of your data source, in pairs of (row-number, row)
     for index, row in main_df.iterrows():
