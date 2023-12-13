@@ -69,8 +69,8 @@ def main() -> None:
     object_labels_to_ids = {}
 
     # iterate through all rows of your data source, in pairs of (row-number, row)
-    for index, row in main_df.iterrows():
-        index = int(str(index))  # convert the index to an integer
+    for i, row in main_df.iterrows():
+        index = int(str(i))  # convert the index to an integer
 
         # keep a reference to this ID in the dict
         resource_label = row["Object"]
