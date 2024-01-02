@@ -59,7 +59,7 @@ def main() -> None:
         image2d_labels_to_ids[resource_label] = resource_id
 
         resource = excel2xml.make_resource(label=resource_label, restype=":Image2D", id=resource_id)
-        resource.append(excel2xml.make_bitstream_prop(img))
+        resource.append(excel2xml.make_bitstream_prop(img, check=True))
         resource.append(excel2xml.make_text_prop(":hasTitle", resource_label))
         root.append(resource)
 
