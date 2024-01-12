@@ -1,6 +1,6 @@
 ---
 
-name: test compatibility with DSP-TOOLS
+name: automated-tests
 
 on:
     schedule:
@@ -10,7 +10,7 @@ on:
             - main
 
 jobs:
-    compatibility:
+    automated-tests:
         runs-on: ubuntu-latest
         steps:
           - name: Checkout repo
