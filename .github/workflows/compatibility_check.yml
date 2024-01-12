@@ -1,0 +1,33 @@
+---
+
+name: test compatibility with DSP-TOOLS
+
+on:
+    schedule:
+        - cron: "0 0 * * *"
+    push:
+        branches-ignore:
+            - main
+
+jobs:
+    compatibility:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout repo
+            uses: actions/checkout@v3
+          - name: Install python
+            uses: actions/setup-python@v4
+            with:
+              python-version: 3.12
+          - name: Install DSP-TOOLS
+            run: pip3 install dsp-tools
+          - name: run the import script
+            run: python3 import_script.py
+          - name: start stack
+            run: dsp-tools start-stack --no-prune
+          - name: create data model
+            run: dsp-tools create import_project.json
+          - name: upload data
+            run: dsp-tools xmlupload data-processed.xml
+
+
