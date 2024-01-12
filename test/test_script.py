@@ -31,12 +31,12 @@ def test_script_output(generated_xml_file: Path) -> None:
 
 def test_create() -> None:
     """Create the project on the DSP server"""
-    subprocess.run("dsp-tools create import_project.json".split())
+    subprocess.run("dsp-tools create import_project.json".split(), check=True)
 
 
 def test_upload(generated_xml_file: Path) -> None:
     """Upload the created XML to the DSP server"""
-    subprocess.run(f"dsp-tools xmlupload {generated_xml_file}".split())
+    subprocess.run(f"dsp-tools xmlupload {generated_xml_file}".split(), check=True)
 
 
 def _sort_xml_by_id(xml: str) -> str:

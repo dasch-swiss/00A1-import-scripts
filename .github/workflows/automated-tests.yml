@@ -23,7 +23,7 @@ jobs:
             run: pip3 install -r requirements.txt
           - name: start stack
             run: dsp-tools start-stack --no-prune
-          - name: run the tests
+          - name: run tests
             run: pytest test
 
 
