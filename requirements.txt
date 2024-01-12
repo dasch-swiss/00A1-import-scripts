@@ -1,0 +1,5 @@
+dsp-tools
+lxml
+regex
+pandas
+pytest
