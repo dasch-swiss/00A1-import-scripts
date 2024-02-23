@@ -173,7 +173,7 @@
     </resource>
     <annotation label="Annotation to Anubis" id="annotation_to_anubis" permissions="res-default">
         <text-prop name="hasComment">
-            <text permissions="prop-default" encoding="utf8">Date and time are invented, like for the other resources.</text>
+            <text permissions="prop-default" encoding="xml">Date and time are invented, like for the other resources.</text>
         </text-prop>
         <resptr-prop name="isAnnotationOf">
             <resptr permissions="prop-default">Anubis_fda7c834-692e-4e2c-b7c8-82e26a2775d9</resptr>
@@ -181,7 +181,7 @@
     </annotation>
     <region label="Region of the Meteorite image" id="region_of_meteorite" permissions="res-default">
         <text-prop name="hasComment">
-            <text permissions="prop-default" encoding="utf8">This is a comment</text>
+            <text permissions="prop-default" encoding="xml">This is a comment</text>
         </text-prop>
         <color-prop name="hasColor">
             <color permissions="prop-default">#5d1f1e</color>
@@ -195,7 +195,7 @@
     </region>
     <link label="Link between BM1888-0601-716 and Horohoroto" id="link_BM1888-0601-716_horohoroto" permissions="res-default">
         <text-prop name="hasComment">
-            <text permissions="prop-default" encoding="utf8">This is a comment</text>
+            <text permissions="prop-default" encoding="xml">This is a comment</text>
         </text-prop>
         <resptr-prop name="hasLinkTo">
             <resptr permissions="prop-default">BM1888-0601-716_97f7982b-eaed-4ef2-8813-cb93f8e2c480</resptr>
