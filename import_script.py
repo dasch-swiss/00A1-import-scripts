@@ -144,14 +144,14 @@ def main() -> None:
     annotation.append(
         excel2xml.make_text_prop(
             "hasComment",
-            "Date and time are invented, like for the other resources.",
+            excel2xml.PropertyElement("Date and time are invented, like for the other resources.", encoding="xml"),
         )
     )
     annotation.append(excel2xml.make_resptr_prop("isAnnotationOf", object_labels_to_ids["Anubis"]))
     root.append(annotation)
 
     region = excel2xml.make_region("Region of the Meteorite image", "region_of_meteorite")
-    region.append(excel2xml.make_text_prop("hasComment", "This is a comment"))
+    region.append(excel2xml.make_text_prop("hasComment", excel2xml.PropertyElement("This is a comment", encoding="xml")))
     region.append(excel2xml.make_color_prop("hasColor", "#5d1f1e"))
     region.append(excel2xml.make_resptr_prop("isRegionOf", image2d_labels_to_ids["GibeonMeteorite.jpg"]))
     region.append(
@@ -164,7 +164,7 @@ def main() -> None:
     root.append(region)
 
     link = excel2xml.make_link("Link between BM1888-0601-716 and Horohoroto", "link_BM1888-0601-716_horohoroto")
-    link.append(excel2xml.make_text_prop("hasComment", "This is a comment"))
+    link.append(excel2xml.make_text_prop("hasComment", excel2xml.PropertyElement("This is a comment", encoding="xml")))
     link.append(
         excel2xml.make_resptr_prop(
             "hasLinkTo",
