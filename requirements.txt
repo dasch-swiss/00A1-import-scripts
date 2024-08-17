@@ -1,4 +1,4 @@
-dsp-tools
+git+https://github.com/dasch-swiss/dsp-tools.git@wip/video-segment-audio-segment#egg=dsp-tools
 lxml
 regex
 pandas
