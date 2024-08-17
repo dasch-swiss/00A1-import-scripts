@@ -173,6 +173,28 @@ def main() -> None:
     )
     root.append(link)
 
+
+    # Video with a Segment
+    # --------------------
+    # Videos and audios are normal resources...
+    video = excel2xml.make_resource("Publicly available video", ":Video-Object", "video_1")
+    video.append(excel2xml.make_bitstream_prop("videos/my_video.mp4"))
+    root.append(video)
+
+    # ... but the segments behave differently:
+    segment = excel2xml.make_video_segment("The first 5 seconds of my video", "segment_1")
+    segment.append(excel2xml.make_isSegmentOf_prop("video_1"))
+    segment.append(excel2xml.make_hasSegmentBounds_prop(start=0, end=5))
+    segment.append(excel2xml.make_hasTitle_prop("Intro of my video"))
+    segment.append(excel2xml.make_hasDescription_prop("This segments marks the first 5 seconds of my video"))
+    segment.append(excel2xml.make_hasComment_prop("Video segments can also have comments"))
+    segment.append(excel2xml.make_hasKeyword_prop("publicly available video"))
+    segment.append(excel2xml.make_relatesTo_prop(object_labels_to_ids["Horohoroto"]))
+    root.append(segment)
+
+    # audio segments are identical, just replace "video" by "audio"
+
+
     # write file
     # ----------
     excel2xml.write_xml(root, "data-processed.xml")

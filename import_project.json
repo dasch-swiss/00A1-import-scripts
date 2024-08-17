@@ -210,6 +210,17 @@
                 "cardinality": "0-n"
               }
             ]
+          },
+          {
+            "name": "Video-Object",
+            "labels": {"en": "Video object"},
+            "super": "MovingImageRepresentation",
+            "cardinalities": [
+              {
+                "propname": ":hasName",
+                "cardinality": "0-n"
+              }
+            ]
           }
         ]
       }
