@@ -186,7 +186,7 @@ def main() -> None:
     segment.append(excel2xml.make_isSegmentOf_prop("video_1"))
     segment.append(excel2xml.make_hasSegmentBounds_prop(start=0, end=5))
     segment.append(excel2xml.make_hasTitle_prop("Intro of my video"))
-    segment.append(excel2xml.make_hasDescription_prop("This segments spans the first 5 seconds of my video"))
+    segment.append(excel2xml.make_hasDescription_prop("This segments marks the first 5 seconds of my video"))
     segment.append(excel2xml.make_hasComment_prop("Video segments can also have comments"))
     segment.append(excel2xml.make_hasKeyword_prop("publicly available video"))
     segment.append(excel2xml.make_relatesTo_prop(object_labels_to_ids["Horohoroto"]))
