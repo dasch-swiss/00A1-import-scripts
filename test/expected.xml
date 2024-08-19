@@ -165,7 +165,7 @@
             <date permissions="prop-default">GREGORIAN:CE:1849:CE:1850</date>
         </date-prop>
         <decimal-prop name=":hasWeight">
-            <decimal permissions="prop-default">1.0</decimal>
+            <decimal permissions="prop-default">1</decimal>
         </decimal-prop>
         <uri-prop name=":hasExternalLink">
             <uri permissions="prop-default">https://en.wikipedia.org/wiki/Haiku#/media/File:Basho_Horohoroto.jpg</uri>
