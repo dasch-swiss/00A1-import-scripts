@@ -207,7 +207,7 @@
     </resource>
     <video-segment label="The first 5 seconds of my video" id="segment_1" permissions="res-default">
         <isSegmentOf permissions="prop-default">video_1</isSegmentOf>
-        <hasSegmentBounds start="0" end="5" permissions="prop-default"/>
+        <hasSegmentBounds segment_start="0" segment_end="5" permissions="prop-default"/>
         <hasTitle permissions="prop-default">Intro of my video</hasTitle>
         <hasDescription permissions="prop-default">This segments spans the first 5 seconds of my video</hasDescription>
         <hasComment permissions="prop-default">Video segments can also have comments</hasComment>
