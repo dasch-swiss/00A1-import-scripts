@@ -202,4 +202,16 @@
             <resptr permissions="prop-default">Horohoroto_5652b411-2c50-4086-896c-23b208ea27a8</resptr>
         </resptr-prop>
     </link>
+    <resource label="Publicly available video" restype=":VideoObject" id="video_1" permissions="res-default">
+        <bitstream permissions="prop-default">videos/my_video.mp4</bitstream>
+    </resource>
+    <video-segment label="The first 5 seconds of my video" id="segment_1" permissions="res-default">
+        <isSegmentOf permissions="prop-default">video_1</isSegmentOf>
+        <hasSegmentBounds segment_start="0" segment_end="5" permissions="prop-default"/>
+        <hasTitle permissions="prop-default">Intro of my video</hasTitle>
+        <hasComment permissions="prop-default">Video segments can also have comments</hasComment>
+        <hasDescription permissions="prop-default">This segments spans the first 5 seconds of my video</hasDescription>
+        <hasKeyword permissions="prop-default">publicly available video</hasKeyword>
+        <relatesTo permissions="prop-default">Horohoroto_42fd3508-f299-4981-9d85-65a48cab14d7</relatesTo>
+    </video-segment>
 </knora>
