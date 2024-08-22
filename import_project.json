@@ -212,7 +212,7 @@
             ]
           },
           {
-            "name": "Video-Object",
+            "name": "VideoObject",
             "labels": {"en": "Video object"},
             "super": "MovingImageRepresentation",
             "cardinalities": [

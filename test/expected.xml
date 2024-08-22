@@ -202,7 +202,7 @@
             <resptr permissions="prop-default">Horohoroto_5652b411-2c50-4086-896c-23b208ea27a8</resptr>
         </resptr-prop>
     </link>
-    <resource label="Publicly available video" restype=":Video-Object" id="video_1" permissions="res-default">
+    <resource label="Publicly available video" restype=":VideoObject" id="video_1" permissions="res-default">
         <bitstream permissions="prop-default">videos/my_video.mp4</bitstream>
     </resource>
     <video-segment label="The first 5 seconds of my video" id="segment_1" permissions="res-default">

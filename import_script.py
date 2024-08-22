@@ -177,7 +177,7 @@ def main() -> None:
     # Video with a Segment
     # --------------------
     # Videos and audios are normal resources...
-    video = excel2xml.make_resource("Publicly available video", ":Video-Object", "video_1")
+    video = excel2xml.make_resource("Publicly available video", ":VideoObject", "video_1")
     video.append(excel2xml.make_bitstream_prop("videos/my_video.mp4"))
     root.append(video)
 
