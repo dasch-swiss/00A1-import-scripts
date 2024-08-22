@@ -209,8 +209,8 @@
         <isSegmentOf permissions="prop-default">video_1</isSegmentOf>
         <hasSegmentBounds segment_start="0" segment_end="5" permissions="prop-default"/>
         <hasTitle permissions="prop-default">Intro of my video</hasTitle>
-        <hasDescription permissions="prop-default">This segments spans the first 5 seconds of my video</hasDescription>
         <hasComment permissions="prop-default">Video segments can also have comments</hasComment>
+        <hasDescription permissions="prop-default">This segments spans the first 5 seconds of my video</hasDescription>
         <hasKeyword permissions="prop-default">publicly available video</hasKeyword>
         <relatesTo permissions="prop-default">Horohoroto_42fd3508-f299-4981-9d85-65a48cab14d7</relatesTo>
     </video-segment>
