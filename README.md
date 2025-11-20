@@ -1,4 +1,6 @@
-# Welcome to 00A1-import-scripts
+# DEPRECATED
+
+This repo is archived. Use the [daschland-scripts](https://github.com/dasch-swiss/daschland-scripts) instead.
 
 This is a template repository 
 that can be used for the archiving process of a big dataset 
